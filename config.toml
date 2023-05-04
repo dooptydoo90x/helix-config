@@ -1,8 +1,21 @@
-theme = "gruvbox_material_dark_soft"
+theme = "ayu_mirage"
 
 [editor]
 line-number = "relative"
-mouse = false
+mouse = true
+scrolloff = 4
+cursorline = true
+true-color = true
+bufferline = "always"
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name", "position-percentage"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -11,3 +24,8 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.indent-guides]
+render = true
+character = "•"
+
