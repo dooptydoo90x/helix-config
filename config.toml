@@ -32,3 +32,7 @@ character = "•"
 [editor.soft-wrap]
 enable = true
 max-wrap = 50
+
+[keys.normal]
+"A-ret" = ["open_above", "normal_mode"]
+"ret" = ["open_below", "normal_mode"]
