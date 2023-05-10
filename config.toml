@@ -10,7 +10,7 @@ bufferline = "always"
 color-modes = true
 
 [editor.statusline]
-left = ["mode", "spinner"]
+left = ["mode", "spinner", "version-control"]
 center = ["file-name", "position-percentage"]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
 mode.normal = "NORMAL"
@@ -29,3 +29,6 @@ hidden = false
 render = true
 character = "•"
 
+[editor.soft-wrap]
+enable = true
+max-wrap = 50
