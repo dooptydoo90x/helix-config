@@ -8,3 +8,121 @@ language-server = { command = "ols" }
 injection-regex = "odin"
 roots = ["ols.json"]
 formatter = { command = "odinfmt", args = [ "-stdin", "true" ] }
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+injection-regex = "rust"
+file-types = ["rs"]
+roots = ["Cargo.toml", "Cargo.lock"]
+auto-format = true
+comment-token = "//"
+language-server = {command = "rust-analyzer"}
+indent = {tab-width = 4, unit = "    "}
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+
+[language.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLInes = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+
+[language.debugger]
+command = "lldb-vscode-14"
+name = "lldb-vscode"
+transport = "stdio"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+completion = [ {name = "binary", completion="filename"} ]
+args = {program = "{0}"}
+
+[[language.debugger.templates]]
+name = "binary (terminal)"
+request = "launch"
+completion = [ {name = "binary", completion="filename"} ]
+args = {program = "{0}", runInTerminal = true}
+
+[[language.debugger.templates]]
+name = "attach"
+request = "attach"
+completion = ["pid"]
+args = {pid = "{0}"}
+
+[[language.debugger.templates]]
+name = "gdbserver attach"
+request = "attach"
+completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ]
+args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] }
+
+[[grammar]]
+name = "rust"
+source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "0a70e15da977489d954c219af9b50b8a722630ee" }
+
+[[language]]
+name = "ada"
+scope = "source.ada"
+file-types = ["ads", "adb"]
+roots = ["alire.toml"]
+auto-format = true
+comment-token = "--"
+language-server = {command = "ada_language_server"}
+indent = {tab-width = 3, unit = "   "}
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+
+[language.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLInes = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+
+[language.debugger]
+command = "gdb"
+name = "gdb"
+transport = "stdio"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+completion = [ {name = "binary", completion="filename"} ]
+args = {program = "{0}"}
+
+[[language.debugger.templates]]
+name = "binary (terminal)"
+request = "launch"
+completion = [ {name = "binary", completion="filename"} ]
+args = {program = "{0}", runInTerminal = true}
+
+[[language.debugger.templates]]
+name = "attach"
+request = "attach"
+completion = ["pid"]
+args = {pid = "{0}"}
+
+[[language.debugger.templates]]
+name = "gdbserver attach"
+request = "attach"
+completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ]
+args = { attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] }
+
+[[grammar]]
+name = "ada"
+source = { git = "https://github.com/briot/tree-sitter-ada", rev = "42cc2eb141529b03a91c18ec8646a0a58fb111ba" }
+
