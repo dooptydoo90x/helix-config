@@ -1,3 +1,4 @@
+
 [[lanuage]]
 name = "odin"
 scope = "scope.odin"
@@ -71,9 +72,9 @@ source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "0a70e
 [[language]]
 name = "ada"
 scope = "source.ada"
-file-types = ["ads", "adb"]
+file-types = ["ads", "adb", "gpr"]
 roots = ["alire.toml"]
-auto-format = true
+auto-format = false
 comment-token = "--"
 language-server = {command = "ada_language_server"}
 indent = {tab-width = 3, unit = "   "}
